@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2022-11-18 12:10:41
+ * :date last edited: 2023-04-25 21:38:35
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -28,11 +28,10 @@ module.exports = appInfo => {
   config.middleware = [];
 
   // 配置线上地址
-  // 配置线上地址
   config.cluster = {
     listen: {
       path: '',
-      port: 8084,
+      port: 8085,
       hostname: '0.0.0.0',
     },
   };
