@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-04-25 22:13:37
+ * :date last edited: 2023-04-26 02:12:18
  */
 'use strict';
 
@@ -91,13 +91,12 @@ class AdminController extends Controller {
   async account() {
     const {ctx} = this;
     const body = ctx.request.body;
-    // const result = await ctx.service.manager.account(body);
-    // if(result.length <=0) {
-    //   ctx.helper.fail({ctx,msg:'用户名或密码错误请重新输入'});
-    //   return
-    // }
-    ctx.helper.success({ctx,msg:'登录成功'})
-    // ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
+    const result = await ctx.service.manager.account(body);
+    if(result.length <=0) {
+      ctx.helper.fail({ctx,msg:'用户名或密码错误请重新输入'});
+      return
+    }
+    ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
   }
   // 管理员登录
   async currentUser() {
@@ -162,3 +161,13 @@ class AdminController extends Controller {
 }
 
 module.exports = AdminController;
+
+// db.manager.insert({
+//     "sex": 1,
+//     "status": "enable",
+//     "add_time": 1682443143441,
+//     "username": "张德志",
+//     "phone": "15992478448",
+//     "password": "0f1826149f50396f1603b56ecceff246",
+//     "email": "154160948@qq.com",
+// })
