@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-04-25 21:38:35
+ * :date last edited: 2023-04-25 22:06:22
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -60,4 +60,4 @@ module.exports = appInfo => {
     ...config,
     ...userConfig,
   };
-};
+}
