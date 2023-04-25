@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-04-25 22:06:59
+ * :date last edited: 2023-04-25 22:13:37
  */
 'use strict';
 
@@ -96,7 +96,8 @@ class AdminController extends Controller {
     //   ctx.helper.fail({ctx,msg:'用户名或密码错误请重新输入'});
     //   return
     // }
-    ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
+    ctx.helper.success({ctx,msg:'登录成功'})
+    // ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
   }
   // 管理员登录
   async currentUser() {
