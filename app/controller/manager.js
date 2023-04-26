@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-04-26 02:12:18
+ * :date last edited: 2023-04-26 12:40:36
  */
 'use strict';
 
@@ -98,6 +98,12 @@ class AdminController extends Controller {
     }
     ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
   }
+
+  async outLogin() {
+    const {ctx} = this;
+    this.helper.success({ctx,msg:'退出登录成功'})
+  }
+  
   // 管理员登录
   async currentUser() {
     const ctx = this.ctx;
@@ -161,13 +167,3 @@ class AdminController extends Controller {
 }
 
 module.exports = AdminController;
-
-// db.manager.insert({
-//     "sex": 1,
-//     "status": "enable",
-//     "add_time": 1682443143441,
-//     "username": "张德志",
-//     "phone": "15992478448",
-//     "password": "0f1826149f50396f1603b56ecceff246",
-//     "email": "154160948@qq.com",
-// })

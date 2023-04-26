@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-04-25 22:06:15
+ * :date last edited: 2023-04-26 12:40:43
  */
 "use strict";
 
@@ -21,6 +21,7 @@ module.exports = (app) => {
   router.post(`${APIV1}/manager/login`, controller.manager.login);
 
   router.post(`${APIV1}/login/account`, controller.manager.account);
+  router.post(`${APIV1}/outLogin`,controller.manager.outLogin)
 
   router.get(`${APIV1}/currentUser`, controller.manager.currentUser);
 
