@@ -1,20 +1,11 @@
 /*
  * :file description:
- * :name: /m-xiaozhicloud/app/model/banner.js
+ * :name: /m-xiaozhicloud/app/model/advert.js
  * :author: 张德志
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2022-11-20 09:10:20
- */
-/*
- * :file description:
- * :name: /m-xiaozhicloud/app/model/manager.js
- * :author: 张德志
- * :copyright: (c) 2022, Tungee
- * :date created: 2022-11-06 22:21:28
- * :last editor: 张德志
- * :date last edited: 2022-11-18 22:44:33
+ * :date last edited: 2023-04-27 13:40:37
  */
 'use strict';
 module.exports = app => {
@@ -26,7 +17,7 @@ module.exports = app => {
     link: { type: String }, // 图片链接
     url: { type: String }, // 图片链接
     status: { type: String }, // 排序
-    position: { type: Number }, 
+    position: { type: String }, 
     update_time: {
       type: Number,
     },

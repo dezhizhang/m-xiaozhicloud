@@ -1,11 +1,11 @@
 /*
  * :file description:
- * :name: /m-xiaozhicloud/app/controller/banner.js
+ * :name: /m-xiaozhicloud/app/controller/advert.js
  * :author: 张德志
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2022-11-20 09:13:10
+ * :date last edited: 2023-04-27 13:39:06
  */
 "use strict";
 
@@ -17,7 +17,7 @@ class AdvertController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.create(body);
-    ctx.helper.success({ ctx, res:'新增网站成功' });
+    ctx.helper.success({ ctx, res:'新增广告成功' });
   }
 
   async edit() {

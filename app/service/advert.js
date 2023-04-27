@@ -2,7 +2,7 @@ const Service = require("egg").Service;
 
 class AdvertService extends Service {
   async create(payload) {
-    const { ctx } = this;;
+    const { ctx } = this;
     return ctx.model.Advert.create(payload);
   }
 
