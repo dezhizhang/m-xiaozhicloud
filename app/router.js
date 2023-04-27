@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-04-27 13:37:54
+ * :date last edited: 2023-04-27 23:19:24
  */
 "use strict";
 
@@ -35,7 +35,7 @@ module.exports = (app) => {
   router.post(`${APIV1}/advert/list`, controller.advert.list);
   router.post(`${APIV1}/advert/add`, controller.advert.add);
   router.put(`${APIV1}/advert/edit`, controller.advert.edit);
-  router.delete(`${APIV1}/website/delete`, controller.advert.delete);
+  router.delete(`${APIV1}/advert/delete`, controller.advert.delete);
 
   // 网站管理
   router.post(`${APIV1}/website/list`, controller.website.list);
