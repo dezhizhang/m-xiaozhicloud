@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-04-25 22:06:22
+ * :date last edited: 2023-04-28 00:42:26
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -26,6 +26,18 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
+
+  config.security = {
+    // 关闭csrf
+    csrf: {
+      enable: false
+    }
+  };
+
+  config.cors = {
+    origin: '*', // 匹配规则  域名+端口  *则为全匹配
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
+  };
 
   // 配置线上地址
   config.cluster = {
