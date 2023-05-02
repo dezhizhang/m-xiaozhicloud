@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-04-28 12:24:49
+ * :date last edited: 2023-05-02 18:28:37
  */
 "use strict";
 
@@ -32,7 +32,7 @@ module.exports = (app) => {
   router.delete(`${APIV1}/manager/delete`, controller.manager.delete);
 
   //会员管理
-  router.post(`${APIV1}/member/register`,controller.member.register);
+  router.post(`${APIV1}/member/register`,controller.manager.register);
 
   // 广告管理
   router.post(`${APIV1}/advert/list`, controller.advert.list);

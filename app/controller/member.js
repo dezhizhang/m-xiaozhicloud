@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-04-28 12:22:10
  * :last editor: 张德志
- * :date last edited: 2023-04-28 12:24:35
+ * :date last edited: 2023-05-02 18:26:41
  */
 /*
  * :file description:
@@ -24,6 +24,11 @@ class MemberController extends Controller {
   // 获取管理员列表
   async register() {
     const { ctx } = this;
+    this.ctx.body = {
+      status:200,
+      msg:'hello',
+      success:true,
+    }
     console.log("ctx");
   }
 }

@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-04-26 12:40:36
+ * :date last edited: 2023-05-02 18:28:30
  */
 'use strict';
 
@@ -163,6 +163,19 @@ class AdminController extends Controller {
         phone: '0752-268888888',
       },
     };
+  }
+  // 注册会员
+  async register() {
+    const {ctx} = this;
+    const body = ctx.request.body;
+    console.log('body',body);
+    // const { ctx } = this;
+    // this.ctx.body = {
+    //   status:200,
+    //   msg:'hello',
+    //   success:true,
+    // }
+    // console.log("ctx");
   }
 }
 
