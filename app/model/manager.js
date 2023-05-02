@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Tungee
  * :date created: 2022-11-06 22:21:28
  * :last editor: 张德志
- * :date last edited: 2022-11-18 22:44:33
+ * :date last edited: 2023-05-02 14:28:51
  */
 'use strict';
 module.exports = app => {
@@ -24,6 +24,11 @@ module.exports = app => {
     status: {
       type: String,
       default: 1,
+    },
+    //是否是超级管理员
+    is_admin:{
+      type:Number,
+      default:0,
     },
     update_time:{
       type: Number,
