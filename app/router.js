@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:30:01
+ * :date last edited: 2023-05-25 12:36:39
  */
 'use strict';
 
@@ -16,6 +16,8 @@ module.exports = app => {
   const { router, controller } = app;
   // 公共url
   const APIV1 = '/api/v1';
+
+  // router.get('/', controller.home.index);
 
   // 用户登录
   router.post(`${APIV1}/manager/login`, controller.manager.login);
