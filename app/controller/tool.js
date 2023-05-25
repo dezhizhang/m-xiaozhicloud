@@ -1,6 +1,15 @@
-"use strict";
+/*
+ * :file description: 
+ * :name: /m-xiaozhicloud/app/controller/tool.js
+ * :author: 张德志
+ * :copyright: (c) 2023, Tungee
+ * :date created: 2023-03-25 17:32:25
+ * :last editor: 张德志
+ * :date last edited: 2023-05-25 12:31:43
+ */
+'use strict';
 
-const { Controller } = require("egg");
+const { Controller } = require('egg');
 
 class ToolController extends Controller {
   // 添加数据
@@ -8,15 +17,15 @@ class ToolController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.tool.create(body);
-    ctx.helper.success({ ctx, res: "新增办公文档成功" });
- 
+    ctx.helper.success({ ctx, res: '新增办公文档成功' });
+
   }
 
   async edit() {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.tool.update(body._id, body);
-    ctx.helper.success({ ctx, res: [], msg: "编辑办公文档成功" });
+    ctx.helper.success({ ctx, res: [], msg: '编辑办公文档成功' });
   }
 
   // 获取所有网站列表
@@ -35,7 +44,7 @@ class ToolController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.tool.destroy(body._id);
-    ctx.helper.success({ ctx, res: "删除办公文档成功" });
+    ctx.helper.success({ ctx, res: '删除办公文档成功' });
   }
 }
 

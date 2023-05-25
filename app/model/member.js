@@ -2,10 +2,10 @@
  * :file description: 会员列表
  * :name: /m-xiaozhicloud/app/model/member.js
  * :author: 张德志
- * :copyright: (c) 2023, Tungee
+ * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-04-28 12:25:00
  * :last editor: 张德志
- * :date last edited: 2023-04-28 12:28:47
+ * :date last edited: 2023-05-25 12:31:24
  */
 'use strict';
 module.exports = app => {
@@ -25,7 +25,7 @@ module.exports = app => {
       type: String,
       default: 1,
     },
-    update_time:{
+    update_time: {
       type: Number,
     },
     add_time: {

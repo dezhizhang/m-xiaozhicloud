@@ -2,26 +2,26 @@
  * :file description:
  * :name: /m-xiaozhicloud/app/router.js
  * :author: 张德志
- * :copyright: (c) 2022, Tungee
+ * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-02 18:28:37
+ * :date last edited: 2023-05-25 12:30:01
  */
-"use strict";
+'use strict';
 
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = (app) => {
+module.exports = app => {
   const { router, controller } = app;
   // 公共url
-  const APIV1 = "/api/v1";
+  const APIV1 = '/api/v1';
 
   // 用户登录
   router.post(`${APIV1}/manager/login`, controller.manager.login);
 
   router.post(`${APIV1}/login/account`, controller.manager.account);
-  router.post(`${APIV1}/outLogin`,controller.manager.outLogin)
+  router.post(`${APIV1}/outLogin`, controller.manager.outLogin);
 
   router.get(`${APIV1}/currentUser`, controller.manager.currentUser);
 
@@ -31,8 +31,8 @@ module.exports = (app) => {
   router.put(`${APIV1}/manager/edit`, controller.manager.edit);
   router.delete(`${APIV1}/manager/delete`, controller.manager.delete);
 
-  //会员管理
-  router.post(`${APIV1}/member/register`,controller.manager.register);
+  // 会员管理
+  router.post(`${APIV1}/member/register`, controller.manager.register);
 
   // 广告管理
   router.post(`${APIV1}/advert/list`, controller.advert.list);

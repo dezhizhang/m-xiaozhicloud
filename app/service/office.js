@@ -1,4 +1,13 @@
-const Service = require("egg").Service;
+/*
+ * :file description:
+ * :name: /m-xiaozhicloud/app/service/office.js
+ * :author: 张德志
+ * :copyright: (c) 2023, Tungee
+ * :date created: 2023-03-25 16:40:55
+ * :last editor: 张德志
+ * :date last edited: 2023-05-25 12:30:23
+ */
+const Service = require('egg').Service;
 
 class WebsiteService extends Service {
   async create(payload) {
@@ -12,7 +21,7 @@ class WebsiteService extends Service {
     const website = await ctx.model.Office.findById(_id);
 
     if (!website) {
-      ctx.throw(400, "删除的数据不存在");
+      ctx.throw(400, '删除的数据不存在');
     }
     return ctx.model.Office.findByIdAndRemove(_id);
   }
@@ -21,7 +30,7 @@ class WebsiteService extends Service {
     const { ctx } = this;
     const office = await ctx.model.Office.findById(_id);
     if (!office) {
-      ctx.throw(400, "更新的数据不存在");
+      ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Office.findByIdAndUpdate(_id, payload);
   }
@@ -34,13 +43,14 @@ class WebsiteService extends Service {
     const totel = await this.ctx.model.Office.find({
       ...filter,
       title: { $regex: regex },
-    }).count().exec()
+    }).count().exec();
     const result = await this.ctx.model.Office.find({
       ...filter,
       title: { $regex: regex },
     })
       .skip(skip)
-      .limit(Number(pageSize)).sort({ add_time: -1 })
+      .limit(Number(pageSize))
+      .sort({ add_time: -1 })
       .exec();
 
     return { total: totel, data: result };

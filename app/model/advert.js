@@ -2,10 +2,10 @@
  * :file description:
  * :name: /m-xiaozhicloud/app/model/advert.js
  * :author: 张德志
- * :copyright: (c) 2022, Tungee
+ * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2023-04-27 13:40:37
+ * :date last edited: 2023-05-25 12:31:15
  */
 'use strict';
 module.exports = app => {
@@ -17,7 +17,7 @@ module.exports = app => {
     link: { type: String }, // 图片链接
     url: { type: String }, // 图片链接
     status: { type: String }, // 排序
-    position: { type: String }, 
+    position: { type: String },
     update_time: {
       type: Number,
     },

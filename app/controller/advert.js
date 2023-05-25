@@ -1,15 +1,15 @@
 /*
- * :file description:
+ * :file description: 广告
  * :name: /m-xiaozhicloud/app/controller/advert.js
  * :author: 张德志
- * :copyright: (c) 2022, Tungee
+ * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-04-27 13:39:06
+ * :date last edited: 2023-05-25 12:29:45
  */
-"use strict";
+'use strict';
 
-const { Controller } = require("egg");
+const { Controller } = require('egg');
 
 class AdvertController extends Controller {
   // 添加数据
@@ -17,14 +17,14 @@ class AdvertController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.create(body);
-    ctx.helper.success({ ctx, res:'新增广告成功' });
+    ctx.helper.success({ ctx, res: '新增广告成功' });
   }
 
   async edit() {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.update(body._id, body);
-    ctx.helper.success({ ctx, res: [], msg: "编辑网站成功" });
+    ctx.helper.success({ ctx, res: [], msg: '编辑网站成功' });
   }
 
   // 获取所有网站列表
@@ -43,7 +43,7 @@ class AdvertController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.destroy(body._id);
-    ctx.helper.success({ ctx, res: "删除网站成功" });
+    ctx.helper.success({ ctx, res: '删除网站成功' });
   }
 }
 

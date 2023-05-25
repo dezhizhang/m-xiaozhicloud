@@ -1,4 +1,13 @@
-const Service = require("egg").Service;
+/*
+ * :file description: 广告服务
+ * :name: /m-xiaozhicloud/app/service/advert.js
+ * :author: 张德志
+ * :copyright: (c) 2023, Tungee
+ * :date created: 2023-03-25 20:33:37
+ * :last editor: 张德志
+ * :date last edited: 2023-05-25 12:30:12
+ */
+const Service = require('egg').Service;
 
 class AdvertService extends Service {
   async create(payload) {
@@ -12,7 +21,7 @@ class AdvertService extends Service {
     const advert = await ctx.model.Advert.findById(_id);
 
     if (!advert) {
-      ctx.throw(400, "删除的数据不存在");
+      ctx.throw(400, '删除的数据不存在');
     }
     return ctx.model.Advert.findByIdAndRemove(_id);
   }
@@ -21,7 +30,7 @@ class AdvertService extends Service {
     const { ctx } = this;
     const advert = await ctx.model.Advert.findById(_id);
     if (!advert) {
-      ctx.throw(400, "更新的数据不存在");
+      ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Advert.findByIdAndUpdate(_id, payload);
   }
@@ -34,13 +43,14 @@ class AdvertService extends Service {
     const totel = await this.ctx.model.Advert.find({
       ...filter,
       title: { $regex: regex },
-    }).count().exec()
+    }).count().exec();
     const result = await this.ctx.model.Advert.find({
       ...filter,
       title: { $regex: regex },
     })
       .skip(skip)
-      .limit(Number(pageSize)).sort({ add_time: -1 })
+      .limit(Number(pageSize))
+      .sort({ add_time: -1 })
       .exec();
 
     return { total: totel, data: result };

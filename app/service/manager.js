@@ -1,16 +1,16 @@
-const Service = require("egg").Service;
+const Service = require('egg').Service;
 
 class WebsiteService extends Service {
   async create(payload) {
     const { ctx } = this;
-    const result = await ctx.model.Manager.find({mobile:payload.mobile});
-    if(result.length > 0) return false;
+    const result = await ctx.model.Manager.find({ mobile: payload.mobile });
+    if (result.length > 0) return false;
     return ctx.model.Manager.create(payload);
   }
 
   async account(payload) {
     const { ctx } = this;
-    console.log(payload)
+    console.log(payload);
     return await ctx.model.Manager.find(payload);
   }
 
@@ -20,7 +20,7 @@ class WebsiteService extends Service {
     const website = await ctx.model.Manager.findById(_id);
 
     if (!website) {
-      ctx.throw(400, "删除的数据不存在");
+      ctx.throw(400, '删除的数据不存在');
     }
     return ctx.model.Manager.findByIdAndRemove(_id);
   }
@@ -30,9 +30,9 @@ class WebsiteService extends Service {
     const d = new Date();
     const manager = await ctx.model.Manager.findById(_id);
     if (!manager) {
-      ctx.throw(400, "更新的数据不存在");
+      ctx.throw(400, '更新的数据不存在');
     }
-    payload.update_time =  d.getTime();
+    payload.update_time = d.getTime();
     return ctx.model.Manager.findByIdAndUpdate(_id, payload);
   }
 
@@ -44,13 +44,14 @@ class WebsiteService extends Service {
     const totel = await this.ctx.model.Manager.find({
       ...filter,
       title: { $regex: regex },
-    }).count().exec()
+    }).count().exec();
     const result = await this.ctx.model.Manager.find({
       ...filter,
       title: { $regex: regex },
     })
       .skip(skip)
-      .limit(Number(pageSize)).sort({ add_time: -1 })
+      .limit(Number(pageSize))
+      .sort({ add_time: -1 })
       .exec();
 
     return { total: totel, data: result };

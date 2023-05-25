@@ -2,10 +2,10 @@
  * :file description:
  * :name: /m-xiaozhicloud/app/controller/manager.js
  * :author: 张德志
- * :copyright: (c) 2022, Tungee
+ * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-05-02 18:28:30
+ * :date last edited: 2023-05-25 12:28:16
  */
 'use strict';
 
@@ -32,18 +32,18 @@ class AdminController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     const result = await this.service.manager.create(body);
-    if(!result) {
-      ctx.helper.fail({ctx,msg:'当前会员已存在'});
+    if (!result) {
+      ctx.helper.fail({ ctx, msg: '当前会员已存在' });
       return;
     }
-    ctx.helper.success({ctx,msg:'增加会员成功'});
+    ctx.helper.success({ ctx, msg: '增加会员成功' });
   }
 
   async edit() {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.manager.update(body._id, body);
-    ctx.helper.success({ ctx, res: [], msg: "修改会员成功" });
+    ctx.helper.success({ ctx, res: [], msg: '修改会员成功' });
   }
 
   // 删除用户
@@ -89,21 +89,21 @@ class AdminController extends Controller {
     };
   }
   async account() {
-    const {ctx} = this;
+    const { ctx } = this;
     const body = ctx.request.body;
     const result = await ctx.service.manager.account(body);
-    if(result.length <=0) {
-      ctx.helper.fail({ctx,msg:'用户名或密码错误请重新输入'});
-      return
+    if (result.length <= 0) {
+      ctx.helper.fail({ ctx, msg: '用户名或密码错误请重新输入' });
+      return;
     }
-    ctx.helper.success({ctx,msg:'登录成功',data:{_id:result._id}})
+    ctx.helper.success({ ctx, msg: '登录成功', data: { _id: result._id } });
   }
 
   async outLogin() {
-    const {ctx} = this;
-    this.helper.success({ctx,msg:'退出登录成功'})
+    const { ctx } = this;
+    this.helper.success({ ctx, msg: '退出登录成功' });
   }
-  
+
   // 管理员登录
   async currentUser() {
     const ctx = this.ctx;
@@ -166,9 +166,9 @@ class AdminController extends Controller {
   }
   // 注册会员
   async register() {
-    const {ctx} = this;
+    const { ctx } = this;
     const body = ctx.request.body;
-    console.log('body',body);
+    console.log('body', body);
     // const { ctx } = this;
     // this.ctx.body = {
     //   status:200,

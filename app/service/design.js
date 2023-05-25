@@ -1,4 +1,4 @@
-const Service = require("egg").Service;
+const Service = require('egg').Service;
 
 class WebsiteService extends Service {
   async create(payload) {
@@ -12,7 +12,7 @@ class WebsiteService extends Service {
     const website = await ctx.model.Design.findById(_id);
 
     if (!website) {
-      ctx.throw(400, "删除的数据不存在");
+      ctx.throw(400, '删除的数据不存在');
     }
     return ctx.model.Design.findByIdAndRemove(_id);
   }
@@ -21,7 +21,7 @@ class WebsiteService extends Service {
     const { ctx } = this;
     const design = await ctx.model.Design.findById(_id);
     if (!design) {
-      ctx.throw(400, "更新的数据不存在");
+      ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Design.findByIdAndUpdate(_id, payload);
   }
@@ -34,13 +34,14 @@ class WebsiteService extends Service {
     const totel = await this.ctx.model.Design.find({
       ...filter,
       title: { $regex: regex },
-    }).count().exec()
+    }).count().exec();
     const result = await this.ctx.model.Design.find({
       ...filter,
       title: { $regex: regex },
     })
       .skip(skip)
-      .limit(Number(pageSize)).sort({ add_time: -1 })
+      .limit(Number(pageSize))
+      .sort({ add_time: -1 })
       .exec();
 
     return { total: totel, data: result };
