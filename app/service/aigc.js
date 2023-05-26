@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 20:33:37
  * :last editor: 张德志
- * :date last edited: 2023-05-26 15:50:56
+ * :date last edited: 2023-05-26 16:02:15
  */
 const Service = require('egg').Service;
 
@@ -38,7 +38,7 @@ class AigcService extends Service {
   // 获取列表数据
   async list(payload) {
     const { pageIndex, pageSize, filter } = payload;
-    const regex = new RegExp(filter.title);
+    const regex = filter.title ? new RegExp(filter.title) : '';
     const skip = this.ctx.helper.skip(pageIndex, pageSize);
     const totel = await this.ctx.model.Aigc.find({
       ...filter,
