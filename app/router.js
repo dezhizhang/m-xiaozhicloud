@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-26 15:47:54
+ * :date last edited: 2023-05-26 16:39:04
  */
 'use strict';
 
@@ -38,7 +38,9 @@ module.exports = app => {
 
   // 人工智能
   router.post(`${APIV1}/aigc/list`, controller.aigc.list);
-
+  router.post(`${APIV1}/aigc/add`, controller.aigc.add);
+  router.put(`${APIV1}/aigc/edit`, controller.aigc.edit);
+  router.delete(`${APIV1}/aigc/delete`, controller.aigc.delete);
   // 广告管理
   router.post(`${APIV1}/advert/list`, controller.advert.list);
   router.post(`${APIV1}/advert/add`, controller.advert.add);
