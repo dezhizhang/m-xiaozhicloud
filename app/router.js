@@ -5,17 +5,20 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-26 16:39:04
+ * :date last edited: 2023-05-26 20:30:56
  */
-'use strict';
+"use strict";
 
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = app => {
-  const { router, controller } = app;
+module.exports = (app) => {
+  const {
+    router,
+    controller
+  } = app;
   // 公共url
-  const APIV1 = '/api/v1';
+  const APIV1 = "/api/v1";
 
   // router.get('/', controller.home.index);
 
@@ -46,6 +49,11 @@ module.exports = app => {
   router.post(`${APIV1}/advert/add`, controller.advert.add);
   router.put(`${APIV1}/advert/edit`, controller.advert.edit);
   router.delete(`${APIV1}/advert/delete`, controller.advert.delete);
+
+  // 详情管理
+  router.get(`${APIV1}/detail/info`, controller.detail.info);
+  router.post(`${APIV1}/detail/add`, controller.detail.add);
+  router.post(`${APIV1}/detail/delete`, controller.detail.delete);
 
   // 网站管理
   router.post(`${APIV1}/website/list`, controller.website.list);
