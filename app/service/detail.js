@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-05-26 20:35:32
  * :last editor: 张德志
- * :date last edited: 2023-05-29 12:13:36
+ * :date last edited: 2023-05-29 12:30:44
  */
 /*
  * :file description: 广告服务
@@ -37,6 +37,7 @@ class AdvertService extends Service {
 
   async update(_id, payload) {
     const { ctx } = this;
+    console.log(_id,payload);
     const detail = await ctx.model.Detail.findById(_id);
     if (!detail) {
       ctx.throw(400, '更新的数据不存在');

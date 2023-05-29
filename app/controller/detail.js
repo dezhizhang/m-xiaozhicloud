@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-05-29 12:22:15
+ * :date last edited: 2023-05-29 12:31:40
  */
 'use strict';
 
@@ -14,9 +14,16 @@ const { Controller } = require('egg');
 class DetailController extends Controller {
   // 添加数据
   async add() {
-    const ctx = this.ctx;
+    const { ctx, service } = this;
+    // 组装参数
     const body = ctx.request.body;
-    console.log('body', body);
+    const res = await service.detail.info(body);
+    console.log('res', res);
+    if (res.data) {
+      await service.detail.update(res?.data?._id, body);
+      ctx.helper.success({ ctx, res: '详情更新成功' });
+      return;
+    }
     await this.service.detail.create(body);
     ctx.helper.success({ ctx, res: '新增详情完成' });
   }
