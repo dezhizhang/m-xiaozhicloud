@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-05-26 20:35:32
  * :last editor: 张德志
- * :date last edited: 2023-05-29 10:39:43
+ * :date last edited: 2023-05-29 12:13:36
  */
 /*
  * :file description: 广告服务
@@ -68,10 +68,7 @@ class AdvertService extends Service {
   // 获取列表数据
   async info(payload) {
     const { detailId } = payload;
-    const result = await this.ctx.model.Detail.find({ detailId })
-      .sort({ add_time: -1 })
-      .exec();
-
+    const result = await this.ctx.model.Detail.find({ detailId });
     return { data: result[0] };
   }
 
