@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-05-29 12:31:40
+ * :date last edited: 2023-05-29 12:33:42
  */
 'use strict';
 
@@ -18,7 +18,6 @@ class DetailController extends Controller {
     // 组装参数
     const body = ctx.request.body;
     const res = await service.detail.info(body);
-    console.log('res', res);
     if (res.data) {
       await service.detail.update(res?.data?._id, body);
       ctx.helper.success({ ctx, res: '详情更新成功' });
