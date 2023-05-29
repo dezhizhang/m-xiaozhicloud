@@ -5,20 +5,20 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-26 20:30:56
+ * :date last edited: 2023-05-29 10:41:17
  */
-"use strict";
+'use strict';
 
 /**
  * @param {Egg.Application} app - egg application
  */
-module.exports = (app) => {
+module.exports = app => {
   const {
     router,
-    controller
+    controller,
   } = app;
   // 公共url
-  const APIV1 = "/api/v1";
+  const APIV1 = '/api/v1';
 
   // router.get('/', controller.home.index);
 

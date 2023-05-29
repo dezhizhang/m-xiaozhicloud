@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-05-26 20:35:32
  * :last editor: 张德志
- * :date last edited: 2023-05-29 08:08:14
+ * :date last edited: 2023-05-29 10:39:43
  */
 /*
  * :file description: 广告服务
@@ -72,7 +72,7 @@ class AdvertService extends Service {
       .sort({ add_time: -1 })
       .exec();
 
-    return { data: result };
+    return { data: result[0] };
   }
 
 }

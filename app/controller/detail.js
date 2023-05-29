@@ -16,6 +16,7 @@ class DetailController extends Controller {
   async add() {
     const ctx = this.ctx;
     const body = ctx.request.body;
+    console.log('body', body);
     await this.service.detail.create(body);
     ctx.helper.success({ ctx, res: '新增详情完成' });
   }
