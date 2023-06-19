@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-06-19 12:37:55
+ * :date last edited: 2023-06-19 16:21:46
  */
 'use strict';
 
@@ -46,7 +46,7 @@ module.exports = app => {
   router.delete(`${APIV1}/aigc/delete`, controller.aigc.delete);
 
 
-  router.post(`${APIV1}/aigc/intelligent-products/list`, controller.aigc.list);
+  router.post(`${APIV1}/aigc/intelligent-products/list`, controller.intelligentProducts.list);
   router.post(`${APIV1}/aigc/intelligent-products/add`, controller.aigc.add);
   router.put(`${APIV1}/aigc/intelligent-products/edit`, controller.aigc.edit);
   router.delete(`${APIV1}/aigc/intelligent-products/delete`, controller.aigc.delete);
