@@ -1,38 +1,38 @@
 /*
  * :file description: 广告服务
- * :name: /m-xiaozhicloud/app/service/aigc.js
+ * :name: /m-xiaozhicloud/app/service/information.js
  * :author: 张德志
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 20:33:37
  * :last editor: 张德志
- * :date last edited: 2023-05-26 16:02:15
+ * :date last edited: 2023-06-19 19:33:39
  */
 const Service = require('egg').Service;
 
 class AigcService extends Service {
   async create(payload) {
     const { ctx } = this;
-    return ctx.model.Aigc.create(payload);
+    return ctx.model.Information.create(payload);
   }
 
 
   async destroy(_id) {
     const { ctx } = this;
-    const aigc = await ctx.model.Aigc.findById(_id);
+    const information = await ctx.model.Information.findById(_id);
 
-    if (!aigc) {
+    if (!information) {
       ctx.throw(400, '删除的数据不存在');
     }
-    return ctx.model.Aigc.findByIdAndRemove(_id);
+    return ctx.model.Information.findByIdAndRemove(_id);
   }
 
   async update(_id, payload) {
     const { ctx } = this;
-    const Aigc = await ctx.model.Aigc.findById(_id);
-    if (!Aigc) {
+    const information = await ctx.model.Information.findById(_id);
+    if (!information) {
       ctx.throw(400, '更新的数据不存在');
     }
-    return ctx.model.Aigc.findByIdAndUpdate(_id, payload);
+    return ctx.model.Information.findByIdAndUpdate(_id, payload);
   }
 
   // 获取列表数据
@@ -40,11 +40,11 @@ class AigcService extends Service {
     const { pageIndex, pageSize, filter } = payload;
     const regex = filter.title ? new RegExp(filter.title) : '';
     const skip = this.ctx.helper.skip(pageIndex, pageSize);
-    const totel = await this.ctx.model.Aigc.find({
+    const totel = await this.ctx.model.Information.find({
       ...filter,
       title: { $regex: regex },
     }).count().exec();
-    const result = await this.ctx.model.Aigc.find({
+    const result = await this.ctx.model.Information.find({
       ...filter,
       title: { $regex: regex },
     })

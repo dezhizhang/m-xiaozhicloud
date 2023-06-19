@@ -1,18 +1,18 @@
 /*
  * :file description:
- * :name: /m-xiaozhicloud/app/model/aigc.js
+ * :name: /m-xiaozhicloud/app/model/information.js
  * :author: 张德志
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2023-05-26 16:38:16
+ * :date last edited: 2023-06-19 19:34:23
  */
 'use strict';
 module.exports = app => {
   const mongoose = app.mongoose;
   const Schema = mongoose.Schema;
   const d = new Date();
-  const AigcSchema = Schema({
+  const InformationSchema = Schema({
     title: { type: String }, // 图片名称
     link: { type: String }, // 图片链接
     url: { type: String }, // 图片链接
@@ -27,5 +27,5 @@ module.exports = app => {
       default: d.getTime(),
     },
   });
-  return mongoose.model('Aigc', AigcSchema, 'aigc');
+  return mongoose.model('Information', InformationSchema, 'information');
 };
