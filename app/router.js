@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-06-19 19:12:45
+ * :date last edited: 2023-06-19 19:24:12
  */
 'use strict';
 
@@ -40,10 +40,10 @@ module.exports = app => {
   router.post(`${APIV1}/member/register`, controller.manager.register);
 
   // 人工智能
-  router.post(`${APIV1}/aigc/list`, controller.aigc.list);
-  router.post(`${APIV1}/aigc/add`, controller.aigc.add);
-  router.put(`${APIV1}/aigc/edit`, controller.aigc.edit);
-  router.delete(`${APIV1}/aigc/delete`, controller.aigc.delete);
+  router.post(`${APIV1}/aigc/news-information/list`, controller.aigc.information.list);
+  router.post(`${APIV1}/aigc/news-information/add`, controller.aigc.information.add);
+  router.put(`${APIV1}/aigc/news-information/edit`, controller.aigc.information.edit);
+  router.delete(`${APIV1}/aigc/news-information/delete`, controller.aigc.information.delete);
 
 
   // 人工智能产品
