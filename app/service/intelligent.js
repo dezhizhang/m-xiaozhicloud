@@ -1,20 +1,12 @@
+
 /*
- * :file description: 
+ * :file description: 人工智能产品
  * :name: /m-xiaozhicloud/app/service/intelligent.js
- * :author: 张德志
- * :copyright: (c) 2023, Tungee
- * :date created: 2023-06-19 19:15:36
- * :last editor: 张德志
- * :date last edited: 2023-06-19 19:16:37
- */
-/*
- * :file description: 广告服务
- * :name: /m-xiaozhicloud/app/service/aigc.js
  * :author: 张德志
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 20:33:37
  * :last editor: 张德志
- * :date last edited: 2023-05-26 16:02:15
+ * :date last edited: 2023-06-19 19:30:00
  */
 const Service = require('egg').Service;
 
