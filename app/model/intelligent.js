@@ -1,11 +1,11 @@
 /*
  * :file description:
- * :name: /m-xiaozhicloud/app/model/aigc.js
+ * :name: /m-xiaozhicloud/app/model/intelligent.js
  * :author: 张德志
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2023-05-26 16:38:16
+ * :date last edited: 2023-06-19 19:42:44
  */
 'use strict';
 module.exports = app => {
@@ -19,7 +19,9 @@ module.exports = app => {
     status: { type: String }, // 排序
     type: { type: String }, // 类型
     position: { type: String },
-    update_time: {
+    topClassify: { type: String }, // 一级分类
+    secondaryClassify: { type: String }, // 二级分类
+    updateTime: {
       type: Number,
     },
     add_time: {
