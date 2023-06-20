@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-23 11:09:53
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:31:38
+ * :date last edited: 2023-06-20 22:49:10
  */
 'use strict';
 
@@ -25,6 +25,13 @@ class WebsiteController extends Controller {
     const body = ctx.request.body;
     await this.service.website.update(body._id, body);
     ctx.helper.success({ ctx, res: [], msg: '编辑网站成功' });
+  }
+
+  async info() {
+    const ctx = this.ctx;
+    const query = ctx.request.query;
+    const res = await this.service.website.info(query?.id);
+    ctx.helper.success({ ctx, res, mes: '获取数据成功' });
   }
 
   // 获取所有网站列表
