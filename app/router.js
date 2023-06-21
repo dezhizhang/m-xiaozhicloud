@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-06-21 16:54:30
+ * :date last edited: 2023-06-21 21:05:12
  */
 'use strict';
 
@@ -81,6 +81,7 @@ module.exports = app => {
   // 设计资源
   router.post(`${APIV1}/design/list`, controller.design.list);
   router.post(`${APIV1}/design/add`, controller.design.add);
+  router.get(`${APIV1}/design/info`, controller.design.info);
   router.put(`${APIV1}/design/edit`, controller.design.edit);
   router.delete(`${APIV1}/design/delete`, controller.design.delete);
 
