@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-06-20 22:39:51
+ * :date last edited: 2023-06-21 16:54:30
  */
 'use strict';
 
@@ -67,13 +67,14 @@ module.exports = app => {
   // 网站管理
   router.post(`${APIV1}/website/list`, controller.website.list);
   router.post(`${APIV1}/website/add`, controller.website.add);
-  router.get(`${APIV1}/website/info`,controller.website.info);
+  router.get(`${APIV1}/website/info`, controller.website.info);
   router.put(`${APIV1}/website/edit`, controller.website.edit);
   router.delete(`${APIV1}/website/delete`, controller.website.delete);
 
   //  办公软件
   router.post(`${APIV1}/office/list`, controller.office.list);
   router.post(`${APIV1}/office/add`, controller.office.add);
+  router.get(`${APIV1}/office/info`, controller.office.info);
   router.put(`${APIV1}/office/edit`, controller.office.edit);
   router.delete(`${APIV1}/office/delete`, controller.office.delete);
 

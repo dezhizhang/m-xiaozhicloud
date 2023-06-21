@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 16:40:55
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:30:23
+ * :date last edited: 2023-06-21 16:54:19
  */
 const Service = require('egg').Service;
 
@@ -33,6 +33,15 @@ class WebsiteService extends Service {
       ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Office.findByIdAndUpdate(_id, payload);
+  }
+
+  async info(_id) {
+    const { ctx } = this;
+    const result = await ctx.model.Office.findById(_id);
+    if (!result) {
+      ctx.throw(400, '获取数据不存在');
+    }
+    return result;
   }
 
   // 获取列表数据
