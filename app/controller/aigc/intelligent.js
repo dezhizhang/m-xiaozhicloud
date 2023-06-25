@@ -6,7 +6,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-06-19 19:18:40
+ * :date last edited: 2023-06-25 16:38:55
  */
 'use strict';
 
@@ -26,6 +26,13 @@ class IntelligentController extends Controller {
     const body = ctx.request.body;
     await this.service.intelligent.update(body._id, body);
     ctx.helper.success({ ctx, res: [], msg: '编辑人工智能产品成功' });
+  }
+
+  async info() {
+    const ctx = this.ctx;
+    const query = ctx.request.query;
+    const res = await this.service.intelligent.info(query?.id);
+    ctx.helper.success({ ctx, res, mes: '获取数据成功' });
   }
 
   async list() {

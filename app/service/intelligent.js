@@ -6,7 +6,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 20:33:37
  * :last editor: 张德志
- * :date last edited: 2023-06-19 19:30:00
+ * :date last edited: 2023-06-25 16:39:32
  */
 const Service = require('egg').Service;
 
@@ -34,6 +34,15 @@ class AigcService extends Service {
       ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Intelligent.findByIdAndUpdate(_id, payload);
+  }
+
+  async info(_id) {
+    const { ctx } = this;
+    const result = await ctx.model.Intelligent.findById(_id);
+    if (!result) {
+      ctx.throw(400, '获取数据不存在');
+    }
+    return result;
   }
 
   // 获取列表数据
