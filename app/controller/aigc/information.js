@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-06-19 19:32:59
+ * :date last edited: 2023-06-25 16:46:55
  */
 'use strict';
 
@@ -18,6 +18,13 @@ class InformationController extends Controller {
     const body = ctx.request.body;
     await this.service.information.create(body);
     ctx.helper.success({ ctx, res: '新增新闻成功' });
+  }
+
+  async info() {
+    const ctx = this.ctx;
+    const query = ctx.request.query;
+    const res = await this.service.information.info(query?.id);
+    ctx.helper.success({ ctx, res, mes: '获取数据成功' });
   }
 
   async edit() {
