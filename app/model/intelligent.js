@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2023-06-19 22:19:14
+ * :date last edited: 2023-07-01 13:35:29
  */
 'use strict';
 module.exports = app => {
@@ -19,8 +19,8 @@ module.exports = app => {
     status: { type: String }, // 排序
     type: { type: String }, // 类型
     description: { type: String },
-    topClassify: { type: String }, // 一级分类
-    secondaryClassify: { type: String }, // 二级分类
+    top_classify: { type: String }, // 一级分类
+    secondary_classify: { type: String }, // 二级分类
     update_time: {
       type: Number,
     },
