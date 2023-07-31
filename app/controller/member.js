@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-04-28 12:22:10
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:28:17
+ * :date last edited: 2023-07-26 17:57:39
  */
 'use strict';
 
@@ -15,12 +15,19 @@ class MemberController extends Controller {
   // 获取管理员列表
   async register() {
     const { ctx } = this;
-    ctx.body = {
-      status: 200,
-      msg: 'hello',
-      success: true,
-    };
-    console.log('ctx');
+    const body = ctx.request.body;
+    const number = ctx.service.manager.getBymember(body.email);
+    console.log(number);
+
+    // console.log(body);
+    // const
+    // const { ctx } = this;
+    // ctx.body = {
+    //   status: 200,
+    //   msg: 'hello',
+    //   success: true,
+    // };
+    // console.log('ctx');
   }
 }
 

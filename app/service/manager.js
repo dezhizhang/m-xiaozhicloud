@@ -1,3 +1,12 @@
+/*
+ * :file description:
+ * :name: /m-xiaozhicloud/app/service/manager.js
+ * :author: 张德志
+ * :copyright: (c) 2023, Tungee
+ * :date created: 2023-03-25 18:45:59
+ * :last editor: 张德志
+ * :date last edited: 2023-07-26 17:54:15
+ */
 const Service = require('egg').Service;
 
 class WebsiteService extends Service {
@@ -6,6 +15,10 @@ class WebsiteService extends Service {
     const result = await ctx.model.Manager.find({ mobile: payload.mobile });
     if (result.length > 0) return false;
     return ctx.model.Manager.create(payload);
+  }
+
+  async getBymember(email) {
+    return await this.model.manager.find({ email });
   }
 
   async account(payload) {
