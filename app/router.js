@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-07-31 19:56:31
+ * :date last edited: 2023-08-15 00:06:03
  */
 'use strict';
 
@@ -35,6 +35,14 @@ module.exports = app => {
   router.post(`${APIV1}/manager/add`, controller.manager.add);
   router.put(`${APIV1}/manager/edit`, controller.manager.edit);
   router.delete(`${APIV1}/manager/delete`, controller.manager.delete);
+
+  // 人工智能产品
+  router.post(`${APIV1}/metaverse/list`, controller.metaverse.list);
+  router.get(`${APIV1}/metaverse/info`, controller.metaverse.info);
+  router.post(`${APIV1}/metaverse/add`, controller.metaverse.add);
+  router.put(`${APIV1}/metaverse/edit`, controller.metaverse.edit);
+  router.delete(`${APIV1}/metaverse/delete`, controller.metaverse.delete);
+
 
   // 会员管理
   router.post(`${APIV1}/member/register`, controller.manager.register);
