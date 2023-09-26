@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-09-26 07:52:42
+ * :date last edited: 2023-09-27 07:28:13
  */
 'use strict';
 
@@ -51,7 +51,8 @@ module.exports = app => {
   // 开源管理
   router.post(`${APIV1}/open-source/list`, controller.opensource.list);
   router.post(`${APIV1}/open-source/add`, controller.opensource.add);
-
+  router.delete(`${APIV1}/open-source/delete`, controller.opensource.delete);
+  router.put(`${APIV1}/open-source/edit`, controller.opensource.edit);
   // 人工智能
   router.post(`${APIV1}/aigc/news-information/list`, controller.aigc.information.list);
   router.get(`${APIV1}/aigc/news-information/info`, controller.aigc.information.info);
