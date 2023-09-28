@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-09-28 18:00:28
+ * :date last edited: 2023-09-29 01:06:04
  */
 'use strict';
 
@@ -165,6 +165,7 @@ class AdminController extends Controller {
       },
     };
   }
+
   // 注册会员
   async register() {
     const { ctx, app } = this;
@@ -189,7 +190,7 @@ class AdminController extends Controller {
     const { _id: userId, is_admin, status, gender } = result;
     const token = ctx.helper.genToken(this, { username, email, userId });
     // 生成用户token并写入redis设置过期时间
-    app.redis.set(email, token);
+    await app.redis.set(email, token);
 
     // 生成token同时放入redis中
     ctx.helper.success({ ctx, res: { token, is_admin, status, userId, gender, email } });
