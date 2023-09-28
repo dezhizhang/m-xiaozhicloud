@@ -5,11 +5,12 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:28:16
+ * :date last edited: 2023-09-28 17:13:43
  */
 'use strict';
 
 const { Controller } = require('egg');
+
 
 class AdminController extends Controller {
   // 获取管理员列表
@@ -168,6 +169,26 @@ class AdminController extends Controller {
   async register() {
     const { ctx } = this;
     const body = ctx.request.body;
+    const { email, password, username } = body;
+
+    const isverify = ctx.helper.verifyEmail(email);
+    if (!isverify) {
+      ctx.helper.fail({ ctx, msg: '邮箱不合法' });
+      return;
+    }
+    // 1 从redis拿验证码做验证码的验证
+
+    // 2 写入当前用户
+    const result = ctx.service.manager.create({ email, password, username });
+    if (!result) {
+      ctx.helper.fail({ ctx, msg: `当${email}已存在` });
+      return;
+    }
+
+    const res = { token: '123456' };
+    ctx.helper.success({ ctx, res });
+
+    // 生成token给用户
     console.log('body', body);
     // const { ctx } = this;
     // this.ctx.body = {

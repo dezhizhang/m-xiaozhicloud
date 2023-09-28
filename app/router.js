@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-09-27 07:28:13
+ * :date last edited: 2023-09-28 16:43:04
  */
 'use strict';
 
@@ -108,5 +108,5 @@ module.exports = app => {
   router.delete(`${APIV1}/friendly-link/delete`, controller.friendlyLink.delete);
 
   // 用户注册
-  // router.post(`${APIV1}/user/register`, controller.member.register);
+  router.post(`${APIV1}/member/register`, controller.manager.register);
 };
