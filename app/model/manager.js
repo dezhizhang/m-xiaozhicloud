@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:21:28
  * :last editor: 张德志
- * :date last edited: 2023-09-28 16:22:40
+ * :date last edited: 2023-09-28 18:02:42
  */
 'use strict';
 module.exports = app => {
@@ -17,6 +17,8 @@ module.exports = app => {
     password: { type: String },
     phone: { type: String },
     email: { type: String },
+    avatar: { type: String },
+    address: { type: String },
     gender: {
       type: Number,
       default: 0,

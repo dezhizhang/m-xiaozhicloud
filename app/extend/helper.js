@@ -8,7 +8,7 @@
  * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-03-25 11:14:09
  * :last editor: 张德志
- * :date last edited: 2023-09-28 17:06:07
+ * :date last edited: 2023-09-28 17:31:36
  */
 // 处理成功响应
 exports.success = ({ ctx, res = null, msg = '请求成功' }) => {
@@ -51,5 +51,17 @@ exports.skip = (pageIndex, pageSize) => {
 exports.verifyEmail = email => {
   const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/g;
   return reg.test(email);
+};
+
+/**
+ * @description: 生成token
+ * @param {*} that
+ * @param {*} data
+ * @return {*}
+ */
+exports.genToken = (that, data) => {
+  const { app } = that;
+  const token = app.jwt.sign(data, app.config.jwt.secret);
+  return token;
 };
 

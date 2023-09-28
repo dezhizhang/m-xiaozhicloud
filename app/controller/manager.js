@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-09-28 17:13:43
+ * :date last edited: 2023-09-28 18:00:28
  */
 'use strict';
 
@@ -167,9 +167,9 @@ class AdminController extends Controller {
   }
   // 注册会员
   async register() {
-    const { ctx } = this;
+    const { ctx, app } = this;
     const body = ctx.request.body;
-    const { email, password, username } = body;
+    const { email, username } = body || {};
 
     const isverify = ctx.helper.verifyEmail(email);
     if (!isverify) {
@@ -179,24 +179,20 @@ class AdminController extends Controller {
     // 1 从redis拿验证码做验证码的验证
 
     // 2 写入当前用户
-    const result = ctx.service.manager.create({ email, password, username });
+    const result = await ctx.service.manager.create(body);
+
     if (!result) {
       ctx.helper.fail({ ctx, msg: `当${email}已存在` });
       return;
     }
 
-    const res = { token: '123456' };
-    ctx.helper.success({ ctx, res });
+    const { _id: userId, is_admin, status, gender } = result;
+    const token = ctx.helper.genToken(this, { username, email, userId });
+    // 生成用户token并写入redis设置过期时间
+    app.redis.set(email, token);
 
-    // 生成token给用户
-    console.log('body', body);
-    // const { ctx } = this;
-    // this.ctx.body = {
-    //   status:200,
-    //   msg:'hello',
-    //   success:true,
-    // }
-    // console.log("ctx");
+    // 生成token同时放入redis中
+    ctx.helper.success({ ctx, res: { token, is_admin, status, userId, gender, email } });
   }
 }
 

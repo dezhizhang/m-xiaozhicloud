@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:29:55
+ * :date last edited: 2023-09-28 17:49:11
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -58,6 +58,25 @@ module.exports = appInfo => {
   config.security = {
     csrf: {
       enable: false,
+    },
+  };
+
+  // jwt
+  config.jwt = { // token 密码
+    secret: 'xiaozhicloud', // 可以自定义
+    sign: {	// jwt.sign(***,***,[options,***])方法中，options的默认设置可以在这里配置；
+      // 过期时间8小时
+      expiresIn: 8 * (60 * 60), // 多少s后过期。actionToken.js中,jwt.sing(plyload,secret,{expiresIn:number})会被合并，调用时设置优先级更高;
+    },
+  };
+
+  // reids
+  config.redis = {
+    client: {
+      port: 6379,
+      host: '127.0.0.1',
+      password: null,
+      db: 0,
     },
   };
 
