@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-09-29 09:39:28
+ * :date last edited: 2023-09-29 16:14:45
  */
 'use strict';
 
@@ -92,12 +92,28 @@ class AdminController extends Controller {
   async account() {
     const { ctx } = this;
     const body = ctx.request.body;
-    const result = await ctx.service.manager.account(body);
-    if (result.length <= 0) {
-      ctx.helper.fail({ ctx, msg: '用户名或密码错误请重新输入' });
+    const { email, password } = body;
+    console.log({ email, password });
+    const member = await ctx.service.manager.getBymember(email);
+    if (!member?.length) {
+      ctx.helper.fail({ ctx, msg: '当前用户不存在请注册' });
       return;
     }
-    ctx.helper.success({ ctx, msg: '登录成功', data: { _id: result._id } });
+    // 进行用户验证
+    const result = await ctx.service.manager.account({ email, password });
+    if (!result.length) {
+      ctx.helper.fail({ ctx, msg: '用户名或密码不正确' });
+      return;
+    }
+
+    // 生成token并将token写入到redis中
+    const { _id, username, status, gender } = result[0];
+    const data = { userId: _id, username, status, gender };
+    const token = await ctx.helper.genToken(this, data);
+    // 将token写入到redis中
+    this.app.redis.set(email, token);
+
+    await ctx.helper.success({ ctx, msg: '登录成功', token, ...data });
   }
 
   async outLogin() {

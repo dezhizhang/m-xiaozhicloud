@@ -5,11 +5,11 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 18:45:59
  * :last editor: 张德志
- * :date last edited: 2023-09-28 17:35:41
+ * :date last edited: 2023-09-29 15:24:38
  */
 const Service = require('egg').Service;
 
-class WebsiteService extends Service {
+class ManagerService extends Service {
   async create(payload) {
     const { ctx } = this;
     const result = await ctx.model.Manager.find({ email: payload.email });
@@ -18,12 +18,12 @@ class WebsiteService extends Service {
   }
 
   async getBymember(email) {
-    return await this.model.manager.find({ email });
+    const { ctx } = this;
+    return await ctx.model.Manager.find({ email });
   }
 
   async account(payload) {
     const { ctx } = this;
-    console.log(payload);
     return await ctx.model.Manager.find(payload);
   }
 
@@ -72,4 +72,4 @@ class WebsiteService extends Service {
 
 }
 
-module.exports = WebsiteService;
+module.exports = ManagerService;
