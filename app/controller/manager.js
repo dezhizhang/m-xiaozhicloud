@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-09-29 16:14:45
+ * :date last edited: 2023-09-29 16:44:03
  */
 'use strict';
 
@@ -89,11 +89,12 @@ class AdminController extends Controller {
       success: true,
     };
   }
+
+  // 用户登录接口
   async account() {
     const { ctx } = this;
     const body = ctx.request.body;
     const { email, password } = body;
-    console.log({ email, password });
     const member = await ctx.service.manager.getBymember(email);
     if (!member?.length) {
       ctx.helper.fail({ ctx, msg: '当前用户不存在请注册' });
@@ -112,8 +113,7 @@ class AdminController extends Controller {
     const token = await ctx.helper.genToken(this, data);
     // 将token写入到redis中
     this.app.redis.set(email, token);
-
-    await ctx.helper.success({ ctx, msg: '登录成功', token, ...data });
+    await ctx.helper.success(ctx, '登录成功', { token, ...data });
   }
 
   async outLogin() {

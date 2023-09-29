@@ -8,17 +8,17 @@
  * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-03-25 11:14:09
  * :last editor: 张德志
- * :date last edited: 2023-09-28 17:31:36
+ * :date last edited: 2023-09-29 16:41:19
  */
 // 处理成功响应
-exports.success = ({ ctx, res = null, msg = '请求成功' }) => {
+exports.success = (ctx, msg = '请求成功', data) => {
   ctx.body = {
-    result: res,
     msg,
     code: 200,
+    ...data,
     success: true,
-    currentAuthority: 'admin',
   };
+
   ctx.status = 200;
 };
 // 处理成功响应
