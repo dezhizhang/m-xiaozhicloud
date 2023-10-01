@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 18:45:59
  * :last editor: 张德志
- * :date last edited: 2023-09-29 15:24:38
+ * :date last edited: 2023-09-29 18:09:41
  */
 const Service = require('egg').Service;
 
@@ -20,6 +20,11 @@ class ManagerService extends Service {
   async getBymember(email) {
     const { ctx } = this;
     return await ctx.model.Manager.find({ email });
+  }
+
+  async getByIdUser(userId) {
+    const { ctx } = this;
+    return await ctx.model.Manager.find({ _id: userId });
   }
 
   async account(payload) {

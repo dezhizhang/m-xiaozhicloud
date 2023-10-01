@@ -8,10 +8,10 @@
  * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-03-25 11:14:09
  * :last editor: 张德志
- * :date last edited: 2023-09-29 16:41:19
+ * :date last edited: 2023-09-29 18:36:26
  */
 // 处理成功响应
-exports.success = (ctx, msg = '请求成功', data) => {
+exports.success = (ctx, msg = '请求成功', data = {}) => {
   ctx.body = {
     msg,
     code: 200,
@@ -22,11 +22,11 @@ exports.success = (ctx, msg = '请求成功', data) => {
   ctx.status = 200;
 };
 // 处理成功响应
-exports.fail = ({ ctx, res = null, code = 400, msg = '请求失败' }) => {
+exports.fail = (ctx, msg = '请求失败', code = 400, data = {}) => {
   ctx.body = {
     code,
     success: false,
-    result: res,
+    ...data,
     msg,
   };
   ctx.status = 200;
