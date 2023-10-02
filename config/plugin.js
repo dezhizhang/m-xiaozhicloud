@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-09-28 17:47:10
+ * :date last edited: 2023-10-02 14:46:12
  */
 'use strict';
 
@@ -28,8 +28,8 @@ exports.jwt = {
 };
 
 // redis
-exports.redis = {
-  enable: true,
-  package: 'egg-redis',
-};
+// exports.redis = {
+//   enable: true,
+//   package: 'egg-redis',
+// };
 

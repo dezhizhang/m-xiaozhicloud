@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-10-01 17:31:42
+ * :date last edited: 2023-10-02 14:47:08
  */
 'use strict';
 
@@ -112,7 +112,7 @@ class AdminController extends Controller {
     const data = { userId: _id, username, status, gender };
     const token = await ctx.helper.genToken(this, data);
     // 将token写入到redis中
-    this.app.redis.set(email, token);
+    // this.app.redis.set(email, token);
     await ctx.helper.success(ctx, '登录成功', { token, ...data });
   }
 

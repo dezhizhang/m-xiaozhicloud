@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-09-29 01:05:32
+ * :date last edited: 2023-10-02 14:46:59
  */
 /* eslint valid-jsdoc: "off" */
 
@@ -71,14 +71,14 @@ module.exports = appInfo => {
   };
 
   // reids
-  config.redis = {
-    client: {
-      port: 6379,
-      host: '127.0.0.1',
-      password: null,
-      db: 0,
-    },
-  };
+  // config.redis = {
+  //   client: {
+  //     port: 6379,
+  //     host: '127.0.0.1',
+  //     password: null,
+  //     db: 0,
+  //   },
+  // };
 
 
   // add your user config here
