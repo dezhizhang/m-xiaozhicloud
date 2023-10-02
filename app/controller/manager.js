@@ -5,12 +5,11 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-10-01 15:46:34
+ * :date last edited: 2023-10-01 17:23:10
  */
 'use strict';
 
 const { Controller } = require('egg');
-
 
 class AdminController extends Controller {
   // 获取管理员列表
@@ -34,17 +33,18 @@ class AdminController extends Controller {
     const body = ctx.request.body;
     const result = await this.service.manager.create(body);
     if (!result) {
-      ctx.helper.fail({ ctx, msg: '当前会员已存在' });
+      await ctx.helper.fail(ctx, '当前会员已存在');
       return;
     }
-    ctx.helper.success({ ctx, msg: '增加会员成功' });
+    await ctx.helper.success(ctx, '增加会员成功');
   }
 
   async edit() {
     const ctx = this.ctx;
     const body = ctx.request.body;
-    await this.service.manager.update(body._id, body);
-    ctx.helper.success({ ctx, res: [], msg: '修改会员成功' });
+    const { _id } = body;
+    await this.service.manager.update(_id, body);
+    await ctx.helper.success(ctx, '修改会员成功');
   }
 
   // 删除用户
@@ -97,13 +97,13 @@ class AdminController extends Controller {
     const { email, password } = body;
     const member = await ctx.service.manager.getBymember(email);
     if (!member?.length) {
-      ctx.helper.fail({ ctx, msg: '当前用户不存在请注册' });
+      ctx.helper.fail(ctx, '当前用户不存在请注册');
       return;
     }
     // 进行用户验证
     const result = await ctx.service.manager.account({ email, password });
     if (!result.length) {
-      ctx.helper.fail({ ctx, msg: '用户名或密码不正确' });
+      ctx.helper.fail(ctx, '用户名或密码不正确');
       return;
     }
 
@@ -130,7 +130,7 @@ class AdminController extends Controller {
     // 查询当前用户是否存在
     const result = await ctx.service.manager.getByIdUser(user_id);
     if (!result.length) {
-      await ctx.helper.fail(ctx, '用户验证失败');
+      await ctx.helper.fail(ctx, '用户验证失败', 400, { is_auth: false });
       return;
     }
     // 用户登录验证成功
@@ -145,7 +145,7 @@ class AdminController extends Controller {
 
     const isverify = ctx.helper.verifyEmail(email);
     if (!isverify) {
-      ctx.helper.fail({ ctx, msg: '邮箱不合法' });
+      ctx.helper.fail(ctx, '邮箱不合法');
       return;
     }
     // 1 从redis拿验证码做验证码的验证
@@ -154,14 +154,14 @@ class AdminController extends Controller {
     const result = await ctx.service.manager.create(body);
 
     if (!result) {
-      ctx.helper.fail({ ctx, msg: `当${email}已存在` });
+      ctx.helper.fail(ctx, `当${email}已存在`);
       return;
     }
 
     const { _id: userId, is_admin, status, gender } = result;
 
     // 生成后将用户信息返回回去
-    ctx.helper.success({ ctx, res: { is_admin, status, userId, gender, email, username } });
+    ctx.helper.success(ctx, '创建用户成功', { is_admin, status, userId, gender, email, username });
   }
 }
 

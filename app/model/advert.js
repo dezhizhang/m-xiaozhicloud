@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:01:10
  * :last editor: 张德志
- * :date last edited: 2023-05-25 12:31:15
+ * :date last edited: 2023-10-01 16:18:56
  */
 'use strict';
 module.exports = app => {
@@ -18,6 +18,7 @@ module.exports = app => {
     url: { type: String }, // 图片链接
     status: { type: String }, // 排序
     position: { type: String },
+    description: { type: String },
     update_time: {
       type: Number,
     },
