@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-09-29 18:02:23
+ * :date last edited: 2023-10-02 17:17:05
  */
 'use strict';
 
@@ -27,7 +27,7 @@ module.exports = app => {
 
   router.post(`${APIV1}/login/account`, controller.manager.account);
   router.get(`${APIV1}/user/current`, controller.manager.current);
-  router.post(`${APIV1}/outLogin`, controller.manager.outLogin);
+  router.post(`${APIV1}/login/out-login`, controller.manager.outLogin);
 
 
   // 用户列表

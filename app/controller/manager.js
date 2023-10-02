@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:23:29
  * :last editor: 张德志
- * :date last edited: 2023-10-02 14:47:08
+ * :date last edited: 2023-10-02 17:14:51
  */
 'use strict';
 
@@ -118,7 +118,7 @@ class AdminController extends Controller {
 
   async outLogin() {
     const { ctx } = this;
-    this.helper.success({ ctx, msg: '退出登录成功' });
+    await ctx.helper.success(ctx, '退出登录成功');
   }
 
   // 管理员登录
@@ -133,8 +133,10 @@ class AdminController extends Controller {
       await ctx.helper.fail(ctx, '用户验证失败', 400, { is_auth: false });
       return;
     }
+    const { _id, gender, status, is_admin, username, email, phone } = result[0];
+    const params = { user_id: _id, gender, status, is_admin, username, email, phone };
     // 用户登录验证成功
-    await ctx.helper.success(ctx, '用户验证成功', { is_auth: true });
+    await ctx.helper.success(ctx, '用户验证成功', { ...params, is_auth: true });
   }
 
   // 注册会员
