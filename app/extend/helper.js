@@ -8,7 +8,7 @@
  * :copyright: (c) 2023, Xiaozhi
  * :date created: 2023-03-25 11:14:09
  * :last editor: 张德志
- * :date last edited: 2023-09-29 18:36:26
+ * :date last edited: 2023-10-01 17:32:25
  */
 // 处理成功响应
 exports.success = (ctx, msg = '请求成功', data = {}) => {
@@ -25,7 +25,7 @@ exports.success = (ctx, msg = '请求成功', data = {}) => {
 exports.fail = (ctx, msg = '请求失败', code = 400, data = {}) => {
   ctx.body = {
     code,
-    success: false,
+    success: true,
     ...data,
     msg,
   };
