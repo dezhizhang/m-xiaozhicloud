@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-10-02 17:17:05
+ * :date last edited: 2023-10-07 06:22:02
  */
 'use strict';
 
@@ -80,26 +80,6 @@ module.exports = app => {
   router.post(`${APIV1}/detail/add`, controller.detail.add);
   router.post(`${APIV1}/detail/delete`, controller.detail.delete);
 
-  // 网站管理
-  router.post(`${APIV1}/website/list`, controller.website.list);
-  router.post(`${APIV1}/website/add`, controller.website.add);
-  router.get(`${APIV1}/website/info`, controller.website.info);
-  router.put(`${APIV1}/website/edit`, controller.website.edit);
-  router.delete(`${APIV1}/website/delete`, controller.website.delete);
-
-  //  办公软件
-  router.post(`${APIV1}/office/list`, controller.office.list);
-  router.post(`${APIV1}/office/add`, controller.office.add);
-  router.get(`${APIV1}/office/info`, controller.office.info);
-  router.put(`${APIV1}/office/edit`, controller.office.edit);
-  router.delete(`${APIV1}/office/delete`, controller.office.delete);
-
-  // 设计资源
-  router.post(`${APIV1}/design/list`, controller.design.list);
-  router.post(`${APIV1}/design/add`, controller.design.add);
-  router.get(`${APIV1}/design/info`, controller.design.info);
-  router.put(`${APIV1}/design/edit`, controller.design.edit);
-  router.delete(`${APIV1}/design/delete`, controller.design.delete);
 
   // 软件工具
   router.post(`${APIV1}/friendly-link/list`, controller.friendlyLink.list);

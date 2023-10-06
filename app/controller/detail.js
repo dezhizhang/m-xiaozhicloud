@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-05-29 12:33:42
+ * :date last edited: 2023-10-07 06:20:17
  */
 'use strict';
 
@@ -24,14 +24,14 @@ class DetailController extends Controller {
       return;
     }
     await this.service.detail.create(body);
-    ctx.helper.success({ ctx, res: '新增详情完成' });
+    await ctx.helper.success(ctx, '新增详情完成');
   }
 
   async edit() {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.detail.update(body._id, body);
-    ctx.helper.success({ ctx, res: [], msg: '编辑详情成功' });
+    await ctx.helper.success(ctx, '编辑详情成功');
   }
 
   // 获取所有网站列表
@@ -42,7 +42,7 @@ class DetailController extends Controller {
     // 调用 Service 进行业务处理
     const res = await service.detail.info(query);
     // 设置响应内容和响应状态码
-    ctx.helper.success({ ctx, res });
+    await ctx.helper.success(ctx, '获取数据成功', res);
   }
 
   // 删除网站
@@ -50,7 +50,7 @@ class DetailController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.destroy(body._id);
-    ctx.helper.success({ ctx, res: '删除网站成功' });
+    ctx.helper.success(ctx, '删除详情成功');
   }
 }
 
