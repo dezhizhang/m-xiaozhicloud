@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-19 09:00:04
  * :last editor: 张德志
- * :date last edited: 2023-10-07 06:20:17
+ * :date last edited: 2023-10-07 09:14:26
  */
 'use strict';
 
@@ -20,7 +20,7 @@ class DetailController extends Controller {
     const res = await service.detail.info(body);
     if (res.data) {
       await service.detail.update(res?.data?._id, body);
-      ctx.helper.success({ ctx, res: '详情更新成功' });
+      await ctx.helper.success(ctx, '详情更新成功');
       return;
     }
     await this.service.detail.create(body);
@@ -50,7 +50,7 @@ class DetailController extends Controller {
     const ctx = this.ctx;
     const body = ctx.request.body;
     await this.service.advert.destroy(body._id);
-    ctx.helper.success(ctx, '删除详情成功');
+    await ctx.helper.success(ctx, '删除详情成功');
   }
 }
 
