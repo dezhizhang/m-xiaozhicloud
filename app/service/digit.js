@@ -5,7 +5,7 @@
  * :copyright: (c) 2023, Tungee
  * :date created: 2023-03-25 20:33:37
  * :last editor: 张德志
- * :date last edited: 2023-10-27 06:20:22
+ * :date last edited: 2023-10-27 06:27:04
  */
 const Service = require('egg').Service;
 
@@ -18,9 +18,9 @@ class DigitService extends Service {
 
   async destroy(_id) {
     const { ctx } = this;
-    const aigc = await ctx.model.Digit.findById(_id);
+    const digit = await ctx.model.Digit.findById(_id);
 
-    if (!aigc) {
+    if (!digit) {
       ctx.throw(400, '删除的数据不存在');
     }
     return ctx.model.Digit.findByIdAndRemove(_id);
@@ -28,8 +28,8 @@ class DigitService extends Service {
 
   async update(_id, payload) {
     const { ctx } = this;
-    const metaverse = await ctx.model.Digit.findById(_id);
-    if (!metaverse) {
+    const digit = await ctx.model.Digit.findById(_id);
+    if (!digit) {
       ctx.throw(400, '更新的数据不存在');
     }
     return ctx.model.Digit.findByIdAndUpdate(_id, payload);
