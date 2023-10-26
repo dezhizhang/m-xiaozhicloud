@@ -5,7 +5,7 @@
  * :copyright: (c) 2022, Xiaozhi
  * :date created: 2022-11-06 22:19:58
  * :last editor: 张德志
- * :date last edited: 2023-10-07 06:22:02
+ * :date last edited: 2023-10-27 06:21:57
  */
 'use strict';
 
@@ -74,6 +74,11 @@ module.exports = app => {
   router.post(`${APIV1}/advert/add`, controller.advert.add);
   router.put(`${APIV1}/advert/edit`, controller.advert.edit);
   router.delete(`${APIV1}/advert/delete`, controller.advert.delete);
+
+  router.post(`${APIV1}/digit/list`, controller.digit.list);
+  router.post(`${APIV1}/digit/add`, controller.digit.add);
+  router.put(`${APIV1}/digit/edit`, controller.digit.edit);
+  router.delete(`${APIV1}/digit/delete`, controller.digit.delete);
 
   // 详情管理
   router.get(`${APIV1}/detail/info`, controller.detail.info);
